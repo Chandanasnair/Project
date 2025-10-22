@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Deposit";
+    Layout = "~/Views/Shared/Customer.cshtml";
+}
+
+<h2>Deposit</h2>
+<h2>Deposit or Withdraw for Account: @ViewBag.AccountId</h2>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div style="color:red">@TempData["ErrorMessage"]</div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div style="color:green">@TempData["SuccessMessage"]</div>
+}
+
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="accountId" value="@ViewBag.AccountId" />
+
+    <label>Transaction Type:</label>
+    <select name="transactionType">
+        <option value="Deposit">Deposit</option>
+        <option value="Withdraw">Withdraw</option>
+    </select>
+    <br />
+    <br />
+
+    <label>Amount:</label>
+    <input type="number" name="amount" step="0.01" min="1" required />
+    <br />
+    <br />
+
+    <button type="submit">Submit</button>
+}
+

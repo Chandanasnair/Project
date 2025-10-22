@@ -1,0 +1,143 @@
+﻿@model DataModel.Model.Customer
+    @{ 
+
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7 col-sm-10">
+            <div class="card shadow-lg border-0 rounded-4">
+                <div class="card-body p-4">
+                    <h3 class="text-center mb-4 fw-bold text-primary">Customer Registration</h3>
+
+                    @using (Html.BeginForm("Register", "Bank", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                                @Html.TextBoxFor(m => m.C_NAME, new { @class = "form-control", placeholder = "Full Name" })
+                                @Html.ValidationMessageFor(m => m.C_NAME, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                                @Html.TextBoxFor(m => m.C_EMAIL, new { @class = "form-control", placeholder = "Email" })
+                                @Html.ValidationMessageFor(m => m.C_EMAIL, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                                @Html.TextBoxFor(m => m.C_MOBILE, new { @class = "form-control", placeholder = "Mobile Number" })
+                                @Html.ValidationMessageFor(m => m.C_MOBILE, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                                @Html.PasswordFor(m => m.C_PASSWORD, new { @class = "form-control", placeholder = "Password" })
+                                @Html.ValidationMessageFor(m => m.C_PASSWORD, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            @Html.TextBoxFor(m => m.C_DOB, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date", max = DateTime.Now.ToString("yyyy-MM-dd") })
+                            @Html.ValidationMessageFor(m => m.C_DOB, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                                @Html.TextBoxFor(m => m.C_ADDRESS, new { @class = "form-control", placeholder = "Address" })
+                                @Html.ValidationMessageFor(m => m.C_ADDRESS, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                                @Html.TextBoxFor(m => m.C_PAN, new { @class = "form-control", placeholder = "PAN Number" })
+                                @Html.ValidationMessageFor(m => m.C_PAN, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-gender-ambiguous"></i></span>
+                                @Html.TextBoxFor(m => m.C_GENDER, new { @class = "form-control", placeholder = "Gender" })
+                                @Html.ValidationMessageFor(m => m.C_GENDER, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">Register</button>
+
+                        <div class="btn btn-success">
+
+                            <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+                            <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+
+                        </div>
+                    }
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show text-center mt-3" role="alert">
+                            @TempData["SuccessMessage"]
+                            <br />
+                            <a href="@Url.Action("ViewSavingsAccounts", "Manager")" class="btn btn-outline-success mt-2">View Accounts</a>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show text-center mt-3" role="alert">
+                            @TempData["ErrorMessage"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    <p class="text-center mt-3 small">
+                        Already have an account? <a href="@Url.Action("Login", "Bank")" class="text-primary fw-bold">Login here</a>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background: #f8f9fa;
+    }
+
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+    .input-group-text {
+        background-color: #e9ecef;
+        border: none;
+    }
+
+    .form-control:focus {
+        box-shadow: none;
+        border-color: #0d6efd;
+    }
+</style>
+

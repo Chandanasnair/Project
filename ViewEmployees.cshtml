@@ -1,0 +1,46 @@
+﻿@model List<DataModel.Model.Employee>
+@{
+    ViewBag.Title = "ViewEmployees";
+    Layout = "~/Views/Shared/Manager.cshtml";
+}
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/cssin.css
+
+<div class="container mt-4">
+    <h2 class="mb-4">Employee List</h2>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-hover table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">E_ID</th>
+                    <th scope="col">E_PAN</th>
+                    <th scope="col">E_Email</th>
+                    <th scope="col">E_Name</th>
+             
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in Model)
+                {
+                    <tr>
+                        <td>@emp.E_ID</td>
+                        <td>@emp.E_PAN</td>
+                        <td>@emp.E_Email</td>
+                        <td>@emp.Employee_Name</td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+            No employees found.
+        </div>
+    }
+</div>
+

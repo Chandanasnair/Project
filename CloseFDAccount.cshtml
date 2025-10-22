@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "CloseFDAccount";
+    Layout = "~/Views/Shared/Manager.cshtml";
+}
+
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="text-center mb-4 text-primary">
+        <i class="bi bi-bank2 me-2"></i> Close FD Account
+    </h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["SuccessMessage"]</div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-warning text-center">@TempData["ErrorMessage"]</div>
+    }
+
+    @using (Html.BeginForm("CloseFDAccount", "Manager", FormMethod.Post))
+    {
+        <div class="mb-3">
+            <label for="fdAccountId" class="form-label fw-bold">FD Account ID</label>
+            <input type="text" id="fdAccountId" name="fdAccountId" class="form-control" placeholder="Enter FD Account ID" required />
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary w-50">Close Account</button>
+        </div>
+    }
+</div>
+

@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "ViewAccounts";
+    Layout = "~/Views/Shared/Customer.cshtml";
+}
+
+<h2>ViewAccounts</h2>
+<h2>My Accounts</h2>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div style="color:red">@TempData["ErrorMessage"]</div>
+}
+@if (TempData["SuccessMessage"] != null)
+{
+    <div style="color:green">@TempData["SuccessMessage"]</div>
+}
+
+<h3>Savings Accounts</h3>
+@if (ViewBag.SavingsAccounts != null && ((List<dynamic>)ViewBag.SavingsAccounts).Count > 0)
+{
+    <table border="1" cellpadding="5" cellspacing="0">
+        <tr>
+            <th>Account ID</th>
+            <th>Balance</th>
+            <th>Actions</th>
+        </tr>
+        @foreach (var acc in ViewBag.SavingsAccounts)
+        {
+            <tr>
+                <td>@acc.SB_ACCOUNT_ID</td>
+                <td>@acc.SB_BALANCE.ToString("C")</td>
+                <td>
+                    <a href="@Url.Action("DepositWithdraw", "Customer", new { accountId = acc.SB_ACCOUNT_ID })">Deposit/Withdraw</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No Savings Accounts found.</p>
+}
+
+<h3>Fixed Deposit Accounts</h3>
+@if (ViewBag.FDAccounts != null && ((List<dynamic>)ViewBag.FDAccounts).Count > 0)
+{
+    <table border="1" cellpadding="5" cellspacing="0">
+        <tr>
+            <th>FD Account ID</th>
+            <th>Amount</th>
+            <th>Tenure (months)</th>
+            <th>ROI (%)</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+        @foreach (var fd in ViewBag.FDAccounts)
+        {
+            <tr>
+                <td>@fd.FD_ACCOUNT_ID</td>
+                <td>@fd.FD_AMOUNT.ToString("C")</td>
+                <td>@fd.FD_TENURE</td>
+                <td>@fd.FD_ROI</td>
+                <td>@fd.FD_START_DATE.ToShortDateString()</td>
+                <td>@fd.FD_END_DATE.ToShortDateString()</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No Fixed Deposit Accounts found.</p>
+}
+
+<h3>Loan Accounts</h3>
+@if (ViewBag.LoanAccounts != null && ((List<dynamic>)ViewBag.LoanAccounts).Count > 0)
+{
+    <table border="1" cellpadding="5" cellspacing="0">
+        <tr>
+            <th>Loan Account ID</th>
+            <th>Loan Amount</th>
+            <th>Outstanding Amount</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+        </tr>
+        @foreach (var loan in ViewBag.LoanAccounts)
+        {
+            <tr>
+                <td>@loan.LA_ACCOUNT_ID</td>
+                <td>@loan.LA_LOAN_AMOUNT.ToString("C")</td>
+                <td>@loan.LA_OUTSTANDING_AMOUNT.ToString("C")</td>
+                <td>@loan.LA_START_DATE.ToShortDateString()</td>
+                <td>@loan.LA_END_DATE.ToShortDateString()</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No Loan Accounts found.</p>
+}
+

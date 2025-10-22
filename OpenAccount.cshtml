@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "OpenAccount";
+    Layout = "~/Views/Shared/Manager.cshtml";
+}
+
+
+<div class="container py-5">
+    <h2 class="text-center mb-5 text-primary fw-bold">
+        <i class="bi bi-bank2 me-2"></i> Open Account
+    </h2>
+
+    <div class="row g-4">
+        
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card text-center shadow-lg p-4 account-card">
+                <i class="bi bi-wallet2 display-4 text-success mb-3"></i>
+                <h5 class="fw-bold">Savings Account</h5>
+                <p class="text-muted small">Open a savings account for a customer</p>
+                <a href="@Url.Action("SavingsAccount","Manager")" class="btn btn-success w-100">Open</a>
+            </div>
+        </div>
+
+       
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card text-center shadow-lg p-4 account-card">
+                <i class="bi bi-piggy-bank-fill display-4 text-warning mb-3"></i>
+                <h5 class="fw-bold">Fixed Deposit Account</h5>
+                <p class="text-muted small">Open a fixed deposit account</p>
+                <a href="@Url.Action("FDAccount","Manager")"class="btn btn-warning w-100 text-white">Open</a>
+            </div>
+        </div>
+
+        
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card text-center shadow-lg p-4 account-card">
+                <i class="bi bi-house-fill display-4 text-primary mb-3"></i>
+                <h5 class="fw-bold">Home Loan Account</h5>
+                <p class="text-muted small">Open a home loan account</p>
+                <a href="@Url.Action("OpenLoanAccount","Manager")" class="btn btn-primary w-100">Open</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .account-card {
+        border-radius: 15px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .account-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+</style>
+

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "CustomerHome";
+    Layout = "~/Views/Shared/Customer.cshtml";
+}
+
+<p>Your Customer ID is: @ViewBag.CustomerID</p>
+
+<p>
+    <a href="@Url.Action("ViewAccounts", "Bank")">View Accounts</a> |
+    <a href="@Url.Action("Deposit", "Bank")">Deposit</a> |
+    <a href="@Url.Action("Withdraw", "Bank")">Withdraw</a> |
+    <a href="@Url.Action("Logout", "Account")">Logout</a>
+</p>

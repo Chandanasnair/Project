@@ -1,0 +1,67 @@
+﻿@model DataModel.Model.Employee
+@{
+    ViewBag.Title = "AddEmployee";
+    Layout = "~/Views/Shared/Employee.cshtml";
+}
+
+<h2 class="text-center mb-4 text-success">Add Employee</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+}
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+}
+
+@using (Html.BeginForm("AddEmployee", "Manager", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group mb-3">
+        @Html.TextBoxFor(m => m.Employee_Name, new { @class = "form-control", placeholder = "Employee Name" })
+        @Html.ValidationMessageFor(m => m.Employee_Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.TextBoxFor(m => m.E_Mobile, new { @class = "form-control", placeholder = "Mobile Number" })
+        @Html.ValidationMessageFor(m => m.E_Mobile, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.TextBoxFor(m => m.E_Email, new { @class = "form-control", placeholder = "Email" })
+        @Html.ValidationMessageFor(m => m.E_Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.TextBoxFor(m => m.E_DOB, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+        @Html.ValidationMessageFor(m => m.E_DOB, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.DropDownListFor(m => m.E_Gender, new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Male", Value = "M" },
+            new SelectListItem { Text = "Female", Value = "F" }
+        }, "Select Gender", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.E_Gender, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.TextBoxFor(m => m.E_Address, new { @class = "form-control", placeholder = "Address" })
+        @Html.ValidationMessageFor(m => m.E_Address, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.TextBoxFor(m => m.E_PAN, new { @class = "form-control", placeholder = "PAN" })
+        @Html.ValidationMessageFor(m => m.E_PAN, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group mb-3">
+        @Html.PasswordFor(m => m.E_PASSWORD, new { @class = "form-control", placeholder = "Password" })
+        @Html.ValidationMessageFor(m => m.E_PASSWORD, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Add Employee</button>
+}

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "FDAccount";
+    Layout = "~/Views/Shared/Manager.cshtml";
+}
+
+<h2>FDAccount</h2>
+<div class="container py-5">
+    <h2 class="text-center mb-5 text-success fw-bold">
+        <i class="bi bi-wallet2 me-2"></i> Savings Account Opening
+    </h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4">
+                <form action="@Url.Action("CheckCustomers","Manager")" method="post">
+                    <div class="mb-3">
+                        <label for="pan" class="form-label fw-bold">Enter PAN Number</label>
+                        <input type="text" id="pan" name="pan" class="form-control" placeholder="Enter PAN number" required />
+                    </div>
+                    <button type="submit" class="btn btn-success w-100">Verify & Continue</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

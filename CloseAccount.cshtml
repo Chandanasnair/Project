@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "CloseAccount";
+    Layout = "~/Views/Shared/Manager.cshtml";
+}
+
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="text-center mb-4">Close Savings Account</h2>
+    <i class="bi bi-bank2 me-2"></i> Close Savings Account
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-info text-center">@TempData["Message"]</div>
+    }
+
+    @using (Html.BeginForm("CloseSavingsAccount", "Manager", FormMethod.Post))
+    {
+        <div class="form-group mb-3">
+            <label for="accountId">Account Number</label>
+            <input type="text" class="form-control" name="accountId" placeholder="Enter Account ID (e.g. SB001)" required />
+        </div>
+
+        <button type="submit" class="btn btn-danger w-100">Close Account</button>
+    }
+
+</div>
+</div>
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="text-center mb-4 text-primary">
+        <i class="bi bi-bank2 me-2"></i> Close FD Account
+    </h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["SuccessMessage"]</div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-warning text-center">@TempData["ErrorMessage"]</div>
+    }
+
+    @using (Html.BeginForm("CloseFDAccount", "Manager", FormMethod.Post))
+    {
+        <div class="mb-3">
+            <label for="fdAccountId" class="form-label fw-bold">FD Account ID</label>
+            <input type="text" id="fdAccountId" name="fdAccountId" class="form-control" placeholder="Enter FD Account ID" required />
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-primary w-50">Close Account</button>
+        </div>
+    }
+</div>
+<div class="container mt-5" style="max-width: 500px;">
+    <h2 class="text-center text-info mb-4">
+        <i class="bi bi-bank2 me-2"></i> Close Loan Account
+    </h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["SuccessMessage"]</div>
+    }
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-info text-center">@TempData["ErrorMessage"]</div>
+    }
+
+    @using (Html.BeginForm("CloseLoanAccount", "CloseAccount", FormMethod.Post))
+    {
+        <div class="mb-3">
+            <label for="loanAccountId" class="form-label fw-bold">Loan Account ID</label>
+            <input type="text" id="loanAccountId" name="loanAccountId" class="form-control" placeholder="Enter Loan Account ID" required />
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-info w-50">Close Account</button>
+        </div>
+    }
+</div>

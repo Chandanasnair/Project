@@ -1,0 +1,56 @@
+﻿@model DataModel.Model.Fixed_Deposit_Account
+@{
+    ViewBag.Title = "CreateFDAccount";
+    Layout = "~/Views/Shared/Manager.cshtml";
+}
+
+<div class="container mt-5" style="max-width: 600px;">
+    <h2 class="text-center mb-4 text-primary">Create Fixed Deposit Account</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success text-center">@TempData["SuccessMessage"]</div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger text-center">@TempData["ErrorMessage"]</div>
+    }
+
+    @using (Html.BeginForm("CreateFDAccount", "Manager", FormMethod.Post))
+    {
+        <div class="form-group mb-3">
+            <label for="customerId" class="form-label fw-bold">Select Customer</label>
+            <select id="customerId" name="customerId" class="form-control" required>
+                <option value="">-- Select Customer --</option>
+                @if (ViewBag.Customers != null)
+                {
+                    foreach (var customer in ViewBag.Customers)
+                    {
+                        <option value="@customer.C_ID">@customer.C_NAME</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="amount" class="form-label fw-bold">Deposit Amount (₹)</label>
+            <input type="number" id="amount" name="amount" class="form-control" placeholder="Enter amount" min="1" step="0.01" required />
+            @Html.ValidationMessageFor(c => c.FD_AMOUNT)
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="tenure" class="form-label fw-bold">Tenure (in months)</label>
+            <input type="number" id="tenure" name="tenure" class="form-control" placeholder="Enter tenure in months" min="1" required />
+            @Html.ValidationMessageFor(c => c.FD_TENURE)
+        </div>
+        <div class="form-group mb-4">
+            <label for="FD_SALARY" class="form-label fw-bold">Salary</label>
+            <input type="number" step="0.01" name="FD_SALARY" class="form-control" required />
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary w-100">Create FD Account</button>
+        </div>
+    }
+</div>

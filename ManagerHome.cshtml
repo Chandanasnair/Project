@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "ManagerHome";
+    Layout = "~/Views/Shared/Manager.cshtml";
+}
+
+
+<div class="container py-5">
+    <h2 class="text-center mb-5 fw-bold text-primary">
+        <i class="bi bi-speedometer2 me-2"></i> Manager Dashboard
+    </h2>
+
+    <div class="row g-4">
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card border-0 shadow-lg text-center dashboard-card">
+                <div class="card-body py-4">
+                    <i class="bi bi-person-plus display-4 text-primary mb-3"></i>
+                    <h5 class="fw-bold mb-3">Open Account</h5>
+                    <a href="@Url.Action("OpenAccount", "Manager")" class="btn btn-primary w-100">Open Account</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card border-0 shadow-lg text-center dashboard-card">
+                <div class="card-body py-4">
+                    <i class="bi bi-person-dash display-4 text-danger mb-3"></i>
+                    <h5 class="fw-bold mb-3">Close Account</h5>
+                    <a href="@Url.Action("CloseAccount", "Manager")" class="btn btn-danger w-100">Close Account</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card border-0 shadow-lg text-center dashboard-card">
+                <div class="card-body py-4">
+                    <i class="bi bi-receipt display-4 text-info mb-3"></i>
+                    <h5 class="fw-bold mb-3">View Transactions</h5>
+                    <a href="#" class="btn btn-info w-100 text-white">View Transaction</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card border-0 shadow-lg text-center dashboard-card">
+                <div class="card-body py-4">
+                    <i class="bi bi-person-workspace display-4 text-success mb-3"></i>
+                    <h5 class="fw-bold mb-3">Add Employee</h5>
+                    <a href="@Url.Action("AddEmployee", "Manager")" class="btn btn-success w-100">Add Employee</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card border-0 shadow-lg text-center dashboard-card">
+                <div class="card-body py-4">
+                    <i class="bi bi-person-workspace display-4 text-success mb-3"></i>
+                    <h5 class="fw-bold mb-3">View Employee</h5>
+                    <a href="@Url.Action("ViewEmployees", "Manager")" class="btn btn-success w-100">View Employee</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card border-0 shadow-lg text-center dashboard-card">
+                <div class="card-body py-4">
+                    <i class="bi bi-person-x display-4 text-warning mb-3"></i>
+                    <h5 class="fw-bold mb-3">Remove Employee</h5>
+                    <a href="@Url.Action("RemoveEmployee", "Manager")" class="btn btn-warning w-100">Remove Employee</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .dashboard-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-radius: 15px;
+    }
+
+        .dashboard-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+    h2 {
+        letter-spacing: 1px;
+    }
+</style>
